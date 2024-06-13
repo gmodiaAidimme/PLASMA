@@ -1,0 +1,127 @@
+.derecha {
+    text-align: right;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.outer {
+    display: table;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.spaceup {
+    margin-top: 10px;
+}
+
+.cajainicial-valor {
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.image-container {
+    padding-top: 10vh;
+    filter: drop-shadow(0px 0px 5px #555);
+}
+
+.logo-principal {
+    display: block;
+    margin: auto;
+    height: 30vh;
+    width: 30vh;
+
+}
+
+.rotate {
+    animation: rotation 90s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+.icono-blanco {
+    color: white;
+}
+
+.cartel-principal {
+    display: block;
+    margin: auto;
+}
+
+.img-diagrama {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: auto;
+}
+
+.btn-center {
+    display: block;
+    margin: auto;
+}
+
+.width35 {
+    width: 35px;
+}
+
+.dot {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.hspace {
+    margin-left: 3px;
+}
+
+.vspace {
+    margin-top: 3px;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.floatright {
+    float: right;
+}
+
+.avatar-selector {
+    cursor: pointer;
+}
+
+.avatar-selector:hover {
+    opacity: 0.5;
+}

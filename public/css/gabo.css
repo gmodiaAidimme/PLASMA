@@ -1,0 +1,236 @@
+.modal-backdrop {
+    opacity: 0.5 !important;
+}
+
+.enlargable {
+    transition: transform 0.2s ease;
+    box-shadow: 0 4px 6px 0 rgba(22, 22, 26, 0.18);
+    border-radius: 0;
+    border: 0;
+    margin-bottom: 1.5em;
+}
+
+.no-shadow {
+    box-shadow: none;
+}
+
+.enlargable:hover {
+    transform: scale(1.05);
+}
+
+.simple-enlargable {
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+.simple-enlargable:hover {
+    transform: scale(1.05);
+}
+
+.avatar {
+    width: 30px;
+    height: 30px;
+    margin: auto;
+    border-radius: 50%;
+}
+
+.marginup {
+    margin-top: 1em;
+}
+
+.spacer {
+    margin-left: 1em;
+}
+
+.newproject {
+    height: 30px;
+    padding-top: 8px;
+    text-align: center;
+    background-color: #f6f7f6;
+    border: 1px solid #e6e6e6;
+}
+
+.plusproject {
+    font-size: 15px;
+    color: #a09898;
+}
+
+.thumbnail {
+    height: 20px;
+    width: 20px;
+}
+
+.circleimg {
+    border-radius: 50%;
+}
+
+.avatar-size {
+    width: 70px;
+    height: 70px;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.eliminar-comentario {
+    cursor: pointer;
+}
+
+.eliminar-comentario:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s;
+}
+
+.icon-container {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    /* Positions the top edge of the icon container at the vertical middle of the parent */
+    transform: translateY(-50%);
+    /* Shifts the icon container up by half its own height to center it */
+    /* Any additional styling you'd like for the container, e.g., padding-right for some spacing from the edge */
+}
+
+.comment-delete-confirmation {
+    background-color: #d63429;
+}
+
+.btn-conf-delete {
+    margin: 0 5px 0 5px;
+}
+
+.comment-delete-confirmation::after,
+.comment-delete-confirmation::before {
+    border-color: transparent transparent transparent #d63429 !important;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+}
+
+.img-diagrama {
+    border-radius: 5px;
+}
+
+.img_configuracion {
+    border-radius: 5px;
+    width: 3rem;
+    height: 3rem;
+}
+
+.img_form_modelo {
+    border-radius: 5px;
+    width: 100%;
+}
+
+.vertical-separator {
+    border-left: 1px solid #000000;
+    height: 100%;
+}
+
+.divSelector {
+    display: flex;
+}
+
+.selector-placeholder {
+    height: 80px;
+    background-color: #e9e9e9;
+}
+
+
+
+#selector-placeholder-2 {
+    opacity: 0.5;
+}
+
+#selector-placeholder-3 {
+    opacity: 0.25;
+}
+
+#selector-placeholder-4 {
+    opacity: 0.1;
+}
+
+.bloqueado {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.barra-opciones {
+    display: flex;
+    border-radius: .25rem;
+    height: 40px;
+    width: 100%;
+    box-shadow: 0 0 1px rgba(0, 0, 0, .125), 0 1px 3px rgba(0, 0, 0, .2);
+    background-color: #fff;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    position: relative;
+    justify-content: center;
+}
+
+.badge-permisos {
+    margin: 0 0.25rem 0 0.25rem;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.cerrar-sesion {
+    margin-top: 1rem;
+}
+
+.gestion-permisos {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.activo {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.activo i {
+    color: #fff;
+}
+
+.widget-user-header {
+    border-bottom-left-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    background-position: center;
+    background-size: cover;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.avatar-operario {
+    width: 9rem;
+    height: 9rem;
+}
+
+.viewnotfound.container {
+    background: #f8f9fa;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.viewnotfound h3 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+}
+
+.viewnotfound p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1em;
+}
+
+.viewnotfound button {
+    transition: background-color 0.3s ease;
+}
+
+.viewnotfound button:hover {
+    background-color: #0056b3;
+}
