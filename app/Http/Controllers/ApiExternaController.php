@@ -68,6 +68,19 @@ class ApiExternaController extends Controller
         return ($maquina->preparacion != 1);
     }
 
+    private function turnoActual($inicio){
+        $horario = Horario::where('dia', (date('w') + 6) % 7)->get();
+        if ($horario->count() == 0) {
+            return ['id' => 0, 'dia' => (date('w') + 6) % 7, 'hora_inicio'=> '00:00:00', 'hora_fin' => '23:59:59'];
+        }
+        foreach ($horario as $turno) {
+            if (date('H:i:s', strtotime($inicio)) > $turno->hora_inicio && date('H:i:s', strtotime($inicio)) < $turno->hora_fin) {
+                return $turno;
+            }
+        }
+        return null;
+    }
+
     //FUNCIONES PUBLICAS
     public function start_of(Request $request)
     {
@@ -165,9 +178,33 @@ class ApiExternaController extends Controller
         if ($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
-        if (!$this->enHorario($request->inicio)) {
+        $modo_autoencendido = Variable::where('nombre','modo_autoencendido')->first();
+
+        // Comprobar en que turno estamos, si estamos fuera de turno devuelve error
+        $turno =$this->turnoActual($request->inicio);
+
+        if(is_null($turno)){
             return response()->json(['resultado' => 'Ningun registro creado', 'motivo' => 'Lectura fuera de horario'], 400);
         }
+
+        if($modo_autoencendido){
+            //Comprobar si hay valores en ese turno
+            $fechahora_inicio_turno = date('Y-m-d H:i:s', strtotime(explode(" ", $request->inicio)[0] . ' ' . $turno->hora_inicio));
+            $fechahora_fin_turno = date('Y-m-d H:i:s', strtotime(explode(" ", $request->inicio)[0] . ' ' . $turno->hora_fin));
+            $num_reg = Registro_actividad::where('maquina_id', $request->maquina)
+                ->where('inicio', '>=', $fechahora_inicio_turno)
+                ->where('fin', '<=', $fechahora_fin_turno)
+                ->count();
+            
+            //Si no hubiera, y la peticion tiene las piezas a cero, enviar error
+            if($num_reg == 0 && $request->piezas == 0){
+                return response()->json(['resultado' => 'Ningun registro creado', 'motivo' => 'Modo autoencendido y no se han creado aún registros con piezas'], 400);
+            }
+        }
+
+        // if (!$this->enHorario($request->inicio)) {
+        //     return response()->json(['resultado' => 'Ningun registro creado', 'motivo' => 'Lectura fuera de horario'], 400);
+        // }
         if (!$this->fueraDeParada($request->inicio)) {
             return response()->json(['resultado' => 'Ningun registro creado', 'motivo' => 'Lectura en parada programada'], 400);
         }
