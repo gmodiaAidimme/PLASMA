@@ -36,6 +36,11 @@ class VariableSeeder extends Seeder
             'tipo' => 'bool'
         ]);
         Variable::create([
+            'nombre' => 'modo_autoencendido',
+            'valor' => '0',
+            'tipo' => 'bool'
+        ]);
+        Variable::create([
             'nombre' => 'gap_alarmas',
             'valor' => '3600',
             'tipo' => 'int'

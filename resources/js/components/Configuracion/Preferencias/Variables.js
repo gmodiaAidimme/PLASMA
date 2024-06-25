@@ -77,6 +77,16 @@ const helpGapAlarmas = (
     </Popover>
 );
 
+const helpModoAutoencendido = (
+    <Popover id="popover-basic">
+        <Popover.Header as="h3">Modo autoencendido</Popover.Header>
+        <Popover.Body>
+            <span> Si este modo está activo, se iniciará la recolección de datos cuando se reciba el primer registro con fabricación, en lugar de cuando inicie el turno según el horario.</span>
+        </Popover.Body>
+    </Popover>
+);
+
+
 
 function RegistroVariable(props) {
 
@@ -112,6 +122,7 @@ function CajaVariables() {
     const [maxRegistro, setMaxRegistro] = useState("");
     const [gapAlarmas, setGapAlarmas] = useState("");
     const [modoManual, setModoManual] = useState(false);
+    const [modoAutoencendido, setModoAutoencendido] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [guardando, setGuardando] = useState(false);
 
@@ -126,6 +137,7 @@ function CajaVariables() {
                 setGapAlarmas(res.data.gap_alarmas);
                 setUnidades(res.data.unidades_productividad)
                 setModoManual(res.data.modo_manual);
+                setModoAutoencendido(res.data.modo_autoencendido)
                 setIsLoading(false);
             })
             .catch(err => {
@@ -142,6 +154,7 @@ function CajaVariables() {
             gap_alarmas: gapAlarmas,
             limite_registro: maxRegistro,
             modo_manual: modoManual,
+            modo_autoencendido: modoAutoencendido,
             unidades_productividad: parseInt(unidades)
         }
         setGuardando(true);
@@ -175,6 +188,7 @@ function CajaVariables() {
                         <RegistroVariable modo="numero" onChange={(e) => setGapAlarmas(e.target.value)} value={gapAlarmas} label="Máx. segundos de alarma" popover={helpGapAlarmas} />
                         <RegistroVariable modo="select" onChange={(e) => setUnidades(parseInt(e.target.value))} value={unidades} label="Unidades de productividad" popover={helpMaxProductividad} options={[{ value: 0, label: "Segundos por pieza" }, { value: 1, label: "Minutos por pieza" }, { value: 2, label: "Horas por pieza" }, { value: 3, label: "Piezas por hora" }, { value: 4, label: "Piezas por minuto" }, { value: 5, label: "Piezas por segundo" }]} />
                         <RegistroVariable modo="switch" onChange={(elem, state) => setModoManual(state)} value={modoManual} label="Modo manual" popover={helpModoManual} />
+                        <RegistroVariable modo="switch" onChange={(elem, state) => setModoAutoencendido(state)} value={modoAutoencendido} label="Modo autoencendido" popover={helpModoAutoencendido} />
                         <div className="row" style={{ marginTop: "15px" }}>
                             <div className="col-md-9"></div>
                             <div className="col-md-3">
